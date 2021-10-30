@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="exercise-1.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <p class="fn-remove-me">Bye bye</p>
+		<div data-function="printHere"></div>
+
+
+<script>
+    //1.1
+    const countries = ['Japón', 'Nicaragua', 'Suiza', 'Australia', 'Venezuela'];
+    let list=document.querySelectorAll('div');
+    for (ele of countries){
+        let nuevap11 = document.createElement('p');
+        nuevap11.innerHTML = ele;
+        list[0].appendChild(nuevap11);
+    }
+
+    //1.2
+    let class12 = document.querySelector(".fn-remove-me");
+    document.body.removeChild(class12)
+
+    //1.3
+    const cars = ['Mazda 6', 'Ford fiesta', 'Audi A4', 'Toyota corola'];
+    let nuevaul13 = document.createElement('ul');
+    for (car of cars){
+        let nuevoli13 = document.createElement('li');
+        nuevoli13.textContent=car;
+        nuevaul13.appendChild(nuevoli13);
+    }
+    list[0].appendChild(nuevaul13);
+
+    //1.4
+    const countries14 = [
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=1'}, 
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=2'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=3'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=4'},
+	{title: 'Random title', imgUrl: 'https://picsum.photos/300/200?random=5'}
+    ];
+    let nuevodiv14 = document.createElement('div');
+    nuevodiv14.id = 'capa14';
+    let i=0;
+    for (elem of countries14){
+        //Creo un Div para agrupar el H4 y el img
+        let imagesandtitle = document.createElement('div');
+        imagesandtitle.id='capa'+i;
+        nuevodiv14.appendChild(imagesandtitle)
+        //Creo el H4
+        let nuevoh414 = document.createElement('h4');
+        nuevoh414.textContent=elem.title;
+        imagesandtitle.appendChild(nuevoh414)
+        //Creo el img
+        let nuevoimg14 = document.createElement('img');
+        nuevoimg14.src=elem.imgUrl;
+        imagesandtitle.appendChild(nuevoimg14)
+        i+=1;
+    }
+    document.body.appendChild(nuevodiv14)
+
+
+    //1.5
+    let nuevobtn15 = document.createElement('button');
+    nuevobtn15.id = 'boton15';
+    let textobtn15=document.createTextNode('miBoton');
+    nuevobtn15.appendChild(textobtn15)
+    document.body.appendChild(nuevobtn15);
+
+    document.querySelector("#boton15").addEventListener("click",function(event){
+        nuevodiv14.removeChild(nuevodiv14.lastChild);
+        } );
+
+
+    
+    //1.6
+    let y=0;
+    listadoobjetos16=nuevodiv14.querySelectorAll('div');
+    for (ele16 of listadoobjetos16){
+        console.log(ele16);
+        let nuevobtn16 = document.createElement('button');
+        nuevobtn16.id = 'boton'+y;
+        let textobtn16=document.createTextNode('Elimina Capa '+y);
+        nuevobtn16.appendChild(textobtn16)
+        ele16.appendChild(nuevobtn16)
+        //eventos
+        let name='#capa'+y;
+        document.querySelector("#boton"+y).addEventListener("click",function(event){
+        nuevodiv14.removeChild(nuevodiv14.querySelector(name));
+        } );
+
+        
+    y+=1;
+
+    }
+
+
+
+</script>
+</body>
+</html>
